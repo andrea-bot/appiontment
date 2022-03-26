@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x' crossorigin='anonymous'>
+    <title>Document</title>
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <h2>Add an appiontment</h2>
+                    <form action="/appiontments/create" method="post">
+                        <label for="task">Task</label>
+                        <input type="text" name="task" class="form-control">
+                        {% for error in get_flashed_messages(category_filter = ['task']) %}
+                            <p class="alert alert-danger">{{ error }}</p>
+                        {% endfor %}
+                        <label for="date">date</label>
+                        <input type="date" name="date" class="form-control">
+                        {% for error in get_flashed_messages(category_filter = ['date']) %}
+                            <p class="alert alert-danger">{{ error }}</p>
+                        {% endfor %}
+                        <label for="status">status</label>
+                        <select name="status" class="form-control">
+                            <option value="Pending">Pending</option>
+                            <option value="Missed">Missed</option>
+                            <option value="Done">Done</option>
+                        </select>
+                        <br>
+                        <input type="sumbit" value="Add" class="btn btn-primary">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
